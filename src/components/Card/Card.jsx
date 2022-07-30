@@ -1,7 +1,9 @@
 import React from 'react'
+import {Link} from "react-router-dom"
 import "../Card/Card.styles.scss"
+import CardInfo from './CardInfo';
 
-const Card = ({results}) => {    // results props contains character details from api
+const Card = ({page, results}) => {    // results props contains character details from api
     
     let characterCard;   // characterCard contains info of the character
 
@@ -14,14 +16,17 @@ const Card = ({results}) => {    // results props contains character details fro
 
             return (
 
-                <div key={id} className="col-4 mb-4">
+                <Link
+                style={{textDecoration:"none"}}
+                to={`${page}${id}`} 
+                key={id} className="col-4 mb-4">
                 <div className="card">
                     <img src={image} alt="" className='img-fluid img '/>
                     <div className="info">
                         <div className='fs-6 fw-bold mb-4 mt-4 text-center'>{name}</div>
                     </div>
                 </div>
-                </div>
+                </Link>
             )
         }
         )
