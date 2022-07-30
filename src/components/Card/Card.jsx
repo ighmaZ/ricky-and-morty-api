@@ -1,7 +1,6 @@
 import React from 'react'
 import {Link} from "react-router-dom"
 import "../Card/Card.styles.scss"
-import CardInfo from './CardInfo';
 
 const Card = ({page, results}) => {    // results props contains character details from api
     
