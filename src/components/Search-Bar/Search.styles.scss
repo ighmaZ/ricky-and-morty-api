@@ -1,7 +1,7 @@
 
 .input{
 
-    width: 45%;
+    width: 40%;
     border-radius: 8px;
     border: 1px solid ;
     box-shadow: 0 0 5pt 3pt #D3D3D3;
@@ -9,5 +9,14 @@
 
 .btn{
     box-shadow: 0 0 5pt 3pt #D3D3D3;
+
+}
+
+
+@media (max-width: 576px){ // when the screen is small 
+
+    .input{
+        width: 70%;
+    }
 
 }

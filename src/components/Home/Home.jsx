@@ -38,7 +38,7 @@ const Home  = () =>{
        {/* ricky and morty top heading image positioned centered */}
 
       <nav class="navbar navbar-light ">
-  <div class="container-fluid col-md-8 offset-md-2 my-4">
+  <div class="container-fluid col-md-8 offset-md-3 my-4">
   <img src ={pic} alt="ricky and morty" width="600" height="100"/>
   </div>
 </nav>

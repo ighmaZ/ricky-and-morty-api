@@ -18,7 +18,7 @@ const Card = ({page, results}) => {    // results props contains character detai
                 <Link
                 style={{textDecoration:"none"}}
                 to={`${page}${id}`} 
-                key={id} className="col-4 mb-4">
+                key={id} className="col-lg-4 col-md-6 col-6 mb-4" >
                 <div className="card">
                     <img src={image} alt="" className='img-fluid img '/>
                     <div className="info">
