@@ -5,20 +5,33 @@ import "../Card/Card.styles.scss"
 
 const CardInfo = () => {
 
-  let { id } = useParams();
+  let { id } = useParams();   
 
-  let [fetchedData, updateFetchedData] = useState([]);
-  let { name, location, origin, gender, image, status, species} = fetchedData;
+  let [fetchChar, setFetchedChar] = useState([]); // saves fetched character from the api
+  let [fetchLocation, setFetchedLocation] = useState([]);   // saves location from the api
+  let { name, location, origin, gender, image, status, species} = fetchChar;
   
 
-  let api = `https://rickandmortyapi.com/api/character/${id}`;
+  let CharApi = `https://rickandmortyapi.com/api/character/${id}`; // id since we are supposed to get to id page using useParam hook
+  let LocationApi = `https://rickandmortyapi.com/api/location/${id}`; 
 
   useEffect(() => {
     (async function () {
-      let data = await fetch(api).then((res) => res.json());
-      updateFetchedData(data);
+      let data = await fetch(CharApi).then((res) => res.json());
+      setFetchedChar(data);
     })();
-  }, [api]);
+  }, [CharApi]);
+
+  useEffect(() => {
+    (async function () {
+      let data = await fetch(LocationApi).then((res) => res.json());
+      setFetchedLocation(data);
+    })();
+  }, [LocationApi]);
+
+
+
+
 
   return (
     
@@ -29,38 +42,60 @@ const CardInfo = () => {
         <img className="img-fluid card mb-4" src={image} alt="" />
       
         <div className="content ">
-          <div className="">
-            <span className="fw-bold text-info ">Name : </span>
-            {name}
+          <div className="mb-5">
+            <h3 className="fw-bold text-center ">Basic Info</h3>
+          
             </div>
             <div className="">
-            <span className="fw-bold ">Species: </span>
+            <span className="fw-bold text-warning">Name: </span>
+            {name}
+          </div>
+            <div className="">
+            <span className="fw-bold text-info">Species: </span>
             {species}
           </div>
           <div className="">
             <span className="fw-bold text-info">Gender : </span>
             {gender}
           </div>
-          <div className="">
-            <span className="fw-bold ">Origin: </span>
-            {origin?.name}
-          </div>
+        
+          
       
-          <div className="">
+          <div className="mb-5">
             <span className="fw-bold text-info"> Status: </span>
             {status}
           </div>
 
+           {/* location info  */}
+     
           <div className="">
-            <span className="fw-bold"> Current Location: </span>
+            <h3 className="fw-bold text-center mb-4">Location Info</h3>
+          
+            </div>
+
+            <div className="">
+            <span className="fw-bold text-warning">Origin: </span>
+            {origin?.name}
+          </div>
+      
+          <div className="">
+            <span className="fw-bold text-success"> Current Location: </span>
             {location?.name}
          </div>
-     
-          
-    
+         <div className="">
+            <span className="fw-bold text-success"> Location Type: </span>
+            {fetchLocation.type}
+         </div>
           <div className="">
-            <span className="fw-bold">Episodes: </span>
-          </div>
+            <span className="fw-bold text-success">  Name: </span>
+            {fetchLocation.name}
+         </div>
+
+          <div className="">
+            <span className="fw-bold text-success"> Dimension: </span>
+            {fetchLocation.dimension}
+         </div>
+        
         </div>
       </div>
     </div>
