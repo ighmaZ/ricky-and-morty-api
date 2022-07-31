@@ -16,7 +16,7 @@ const Search = ({setSearch}) => {
 
     
     
-    <form  className='d-flex justify-content-center gap-3 mb-5'>
+    <form  className='d-flex justify-content-center gap-3 mb-5 '>
     <input 
     type="text" 
     onChange={handleChange} 

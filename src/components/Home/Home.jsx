@@ -13,7 +13,7 @@ const Home  = () =>{
     let [pageNum, setPageNum ] = useState(1)     // to change page numbers through pagination
     let [fetchedData, setFetchedData] = useState([]) //to save the fetched data
     let [search , setSearch] = useState(""); // used to search the characters in input fields
-    let {info, results} = fetchedData; // destructuring since we are getting two data from the api (info and results)
+    let {results} = fetchedData; // destructuring since we are getting two data from the api (info and results)
   
   
     let api= `https://rickandmortyapi.com/api/character/?page=${pageNum}&name=${search}`;
@@ -35,13 +35,18 @@ const Home  = () =>{
 
       <div className="App"> 
       
-    
        {/* ricky and morty top heading image positioned centered */}
-      <div className="col-md-8 offset-md-3 my-4">   
-      <img src ={pic} alt="ricky and morty" width="600" height="100"/>
-      </div>
-  
+
+      <nav class="navbar navbar-light ">
+  <div class="container-fluid col-md-8 offset-md-2 my-4">
+  <img src ={pic} alt="ricky and morty" width="600" height="100"/>
+  </div>
+</nav>
+     
+  {/* search bar */}
+
       <Search setSearch = {setSearch}/>
+
   {/* container  */}
      <div className="container">
   

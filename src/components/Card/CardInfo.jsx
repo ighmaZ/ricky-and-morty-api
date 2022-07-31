@@ -1,12 +1,15 @@
 import React, { useEffect , useState} from 'react'
 import {useParams} from "react-router-dom"
+import "../Card/Card.styles.scss"
+
 
 const CardInfo = () => {
 
   let { id } = useParams();
 
   let [fetchedData, updateFetchedData] = useState([]);
-  let { name, location, origin, gender, image, status, species } = fetchedData;
+  let { name, location, origin, gender, image, status, species} = fetchedData;
+  
 
   let api = `https://rickandmortyapi.com/api/character/${id}`;
 
@@ -18,36 +21,45 @@ const CardInfo = () => {
   }, [api]);
 
   return (
-    <div className="container d-flex justify-content-center mb-5">
+    
+    <div className="container d-flex justify-content-center mb-5 mt-3">
       <div className="d-flex flex-column gap-3">
-        <h1 className="text-center">{name}</h1>
+      
 
-        <img className="img-fluid" src={image} alt="" />
-        {(() => {
-          if (status === "Dead") {
-            return <div className="badge bg-danger fs-5">{status}</div>;
-          } else if (status === "Alive") {
-            return <div className=" badge bg-success fs-5">{status}</div>;
-          } else {
-            return <div className="badge bg-secondary fs-5">{status}</div>;
-          }
-        })()}
-        <div className="content">
+        <img className="img-fluid card mb-4" src={image} alt="" />
+      
+        <div className="content ">
           <div className="">
-            <span className="fw-bold">Gender : </span>
+            <span className="fw-bold text-info ">Name : </span>
+            {name}
+            </div>
+            <div className="">
+            <span className="fw-bold ">Species: </span>
+            {species}
+          </div>
+          <div className="">
+            <span className="fw-bold text-info">Gender : </span>
             {gender}
           </div>
           <div className="">
-            <span className="fw-bold">Location: </span>
-            {location?.name}
-          </div>
-          <div className="">
-            <span className="fw-bold">Origin: </span>
+            <span className="fw-bold ">Origin: </span>
             {origin?.name}
           </div>
+      
           <div className="">
-            <span className="fw-bold">Species: </span>
-            {species}
+            <span className="fw-bold text-info"> Status: </span>
+            {status}
+          </div>
+
+          <div className="">
+            <span className="fw-bold"> Current Location: </span>
+            {location?.name}
+         </div>
+     
+          
+    
+          <div className="">
+            <span className="fw-bold">Episodes: </span>
           </div>
         </div>
       </div>
